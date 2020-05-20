@@ -1,5 +1,5 @@
 import neopixel
-
+import board
 
 global blue
 rotateCheck = 0
