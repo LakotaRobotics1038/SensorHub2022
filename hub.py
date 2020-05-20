@@ -12,7 +12,7 @@ xshut.append(DigitalInOut(board.D21))
 xshut.append(DigitalInOut(board.D20))
 
 laser_base.set_addresses()
-leds.setup(4, 30)
+leds.setup(DigitalInOut(board.D4), 30)
 
 print("setup over")
 while enabled:
