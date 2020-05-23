@@ -2,7 +2,7 @@ import board
 import serial
 
 
-rio = serial.Serial('/dev/ttyAMA0', 9600, timeout = 0, write_timeout = 0)
+rio = serial.Serial('/dev/ttyAMA0', 115200, timeout = 0, write_timeout = 0)
 #standin = rio.read()
 
 def disabled():
