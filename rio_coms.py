@@ -2,12 +2,12 @@ import board
 import serial
 
 
-rio = serial.Serial('/dev/ttyAMA0', baudrate = 115200, timeout = 0, write_timeout = 0)
-#standin = rio.read()
+rio = serial.Serial('/dev/serial0', baudrate = 115200, timeout = 0, write_timeout = 0)
+
 
 def disabled():
     print(rio.read())
-    if rio.read() is 'D':
+    if rio.read() == b'D':	#the b is just an error I haven't figured out yet
         return True
     else:
         return False
