@@ -3,7 +3,7 @@
 
 # SAMS CODE =================
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, make_response
 import datetime
 import RPi.GPIO as GPIO
 
@@ -27,6 +27,10 @@ def main_response():
 		'sensor2' : currentTimeString
 	}
 	return render_template('index.html', **templateData)
+
+@app.route('/request-test/')
+def request_response():
+	return jsonify(message='hey there love')
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
