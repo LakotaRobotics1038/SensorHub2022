@@ -17,7 +17,7 @@ laser_base.set_addresses()
 
 print("enabled")
 while enabled:
-    print("looping")
+    print(enumerate(xshut), enumerate(laser_base.vl53))
         #leds.normal_Rotation(4)
     for i in range(len(lasers)):
         print("for")
