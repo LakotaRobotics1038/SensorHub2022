@@ -33,6 +33,7 @@ def reset_addresses():
         power_pin.value = True
         vl53.insert(i, VL53L0X(i2c))            #add a sensor object, in the same order as the xshut's
         vl53[i].set_address(0x29)               #set each laser to 29 as it turns on
+        power_pin.value = False
 
 
 def detect_range(count=5):
