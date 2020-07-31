@@ -15,7 +15,6 @@ laser_base.reset_addresses()
 laser_base.set_addresses()
 #leds.setup(board.D0, 30)
 
-print("enabled")
 while enabled:
     print(len(lasers))
         #leds.normal_Rotation(4)
