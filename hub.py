@@ -13,6 +13,7 @@ xshut.append(DigitalInOut(board.D20))
 
 
 laser_base.set_addresses()
+laser_base.reset_addresses()
 #leds.setup(board.D0, 30)
 
 while enabled:
