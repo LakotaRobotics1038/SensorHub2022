@@ -16,6 +16,7 @@ def set_addresses():
     """ Set a unique address for each laser with an assigned xshut pin """
     for i, power_pin in enumerate(xshut):
         print(i)
+        print(len(xshut))
         power_pin.value = True                  #turn xshut on for selected pin
         if i < len(xshut)-1:                    # leave last sensor's address 29, before that, they will be increasing
             vl53[i].set_address(0x30 + i)
