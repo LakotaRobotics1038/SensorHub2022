@@ -14,9 +14,6 @@ vl53 = []               #list of laser objects, ordered in the order the xshut's
 
 def set_addresses():
     """ Set a unique address for each laser with an assigned xshut pin """
-    for power_pin in xshut:                     #set each xshut pin to output and turn off
-        power_pin.switch_to_output(value=False)
-
     for i, power_pin in enumerate(xshut):
         power_pin.value = True                  #turn xshut on for selected pin
         if i < len(xshut)-1:                    # leave last sensor's address 29, before that, they will be increasing
