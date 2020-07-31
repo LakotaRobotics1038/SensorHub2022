@@ -27,10 +27,10 @@ def reset_addresses():
     """ set all adresses back to zero """
     for power_pin in xshut:                     #set each xshut pin to output and turn off
         power_pin.switch_to_output(value=False)
-        
+
     for i, power_pin in enumerate(xshut):       #turns on each laser
         power_pin.value = True
-         vl53.insert(i, VL53L0X(i2c))            #add a sensor object, in the same order as the xshut's
+        vl53.insert(i, VL53L0X(i2c))            #add a sensor object, in the same order as the xshut's
         vl53[i].set_address(0x29)               #set each laser to 29 as it turns on
 
 
