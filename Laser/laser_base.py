@@ -19,6 +19,8 @@ def set_addresses():
         power_pin.value = True                  #turn xshut on for selected pin
         if i < len(xshut)-1:                    # leave last sensor's address 29, before that, they will be increasing
             vl53[i].set_address(0x30 + i)
+        else 
+            vl53[i].set_address(0x29)
 
 
 def reset_addresses():
