@@ -17,8 +17,10 @@ laser_base.set_addresses()
 
 print("enabled")
 while enabled:
+print("looping")
         #leds.normal_Rotation(4)
-    for i in len(lasers):
+    for i in range(len(lasers)):
+        print("for")
         print(int(laser_base.distance(i)), i)
             #rio_coms.send_value(int(laser_base.distance(i)), i)
 
