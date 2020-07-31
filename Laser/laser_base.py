@@ -32,7 +32,7 @@ def reset_addresses():
         power_pin.value = False
 
 
-def detect_range(count=5):
+def detect_range(count):
     """ take 5 samples from each sensor"""
     while count:
         for index, sensor in enumerate(vl53):
