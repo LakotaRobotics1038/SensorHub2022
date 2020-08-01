@@ -18,7 +18,6 @@ laser_base.set_addresses()
 while enabled:
     print(len(lasers))
         #leds.normal_Rotation(4)
-    laser_base.detect_range(5)
     for i in range(len(lasers)):
         print("for")
         print(laser_base.distance(i), i)

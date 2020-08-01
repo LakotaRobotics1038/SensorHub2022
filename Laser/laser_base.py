@@ -18,7 +18,6 @@ def set_addresses():
         power_pin.value = True                  #turn xshut on for selected pin
         if i < len(xshut)-1:                    # leave last sensor's address 29, before that, they will be increasing
             vl53[i].set_address(0x2a + i)
-        vl53[i]._write_u8(0x0B, 0x01)
 
 
 def reset_addresses():
@@ -31,6 +30,7 @@ def reset_addresses():
         vl53.insert(i, VL53L0X(i2c))            #add a sensor object, in the same order as the xshut's
         vl53[i].__init__
         vl53[i].set_address(0x29)               #set each laser to 29 as it turns on
+        vl53[i]._write_u8(0x0B, 0x01)
         power_pin.value = False
 
 
