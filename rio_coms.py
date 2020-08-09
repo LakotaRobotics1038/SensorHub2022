@@ -1,13 +1,13 @@
 import board
 import serial
 
-
-rio = serial.Serial('/dev/serial0', baudrate = 115200, timeout = 0, write_timeout = 0)
-
+print("about to serial")
+rio = serial.Serial('/dev/ttyAMA0', 9600, timeout = 0, write_timeout = 0)
+standin = rio.read()
 
 def disabled():
-    print(rio.read())
-    if rio.read() == b'D':	#the b is just an error I haven't figured out yet
+    print((rio.read()).decode('utf-8'))
+    if rio.read() is 'D':
         return True
     else:
         return False
@@ -21,6 +21,6 @@ def disabled():
 #        return False
 
 
-def send_value(value, laser):
-    print("Value of Laser {}: {}".format(laser, value))
+def send_value(value):
+    print("Value {}".format(value))
     rio.write([value])

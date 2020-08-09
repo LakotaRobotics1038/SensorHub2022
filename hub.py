@@ -2,28 +2,26 @@ from Laser import laser_base
 from digitalio import DigitalInOut
 import board
 import rio_coms
-import leds
 
 xshut = laser_base.xshut
 lasers = laser_base.vl53
 enabled = True
 
-xshut.append(DigitalInOut(board.D19))
-xshut.append(DigitalInOut(board.D26))
+xshut.append(DigitalInOut(board.D21))
+xshut.append(DigitalInOut(board.D20))
 
-laser_base.reset_addresses()
 laser_base.set_addresses()
-#leds.setup(board.D0, 30)
 
+print("setup over")
 while enabled:
-    print(len(lasers))
-        #leds.normal_Rotation(4)
-    for i in range(len(lasers)):
-        print("for")
-        print(laser_base.distance(i), i)
-            #rio_coms.send_value(int(laser_base.distance(i)), i)
+    if rio_coms.disabled():
+        enabled = False
+    else:
+        print("sending value")
+        for i in range(len(lasers)):
+            rio_coms.send_value(int(laser_base.distance(i)))
 
 
-#leds.rainbow_cycle(0.01)
-print("Queue rainbow leds")
+#it'd be cool to throw rainbow led code in here
+print("ended")
 laser_base.reset_addresses()
