@@ -21,6 +21,6 @@ def disabled():
 #        return False
 
 
-def send_value(value):
-    print("Value {}".format(value))
+def send_value(laser, value):
+    print("Laser {}: {}".format(laser, value))
     rio.write([value])
