@@ -24,7 +24,7 @@ def rotate(colorA, colorB, length):
             primary = not primary
         firstRun = False
     
-    for i in range(qty):
+    for i in range(10):
         if i + cycle % 4 == 0:
             if primary:
                 print(i)
