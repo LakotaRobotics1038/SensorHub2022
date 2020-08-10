@@ -26,33 +26,29 @@ def rotate(colorA, colorB, length):
     rotateCheck += 1
     leds.show()
 
+def rainbow_cycle(wait):
+    for j in range(255):
+        for i in range(led_count):
+            pixel_index = (i * 256 // led_count) + j
+            leds[i] = wheel(pixel_index & 255)
+        leds.show()
+        leds.sleep(wait)
 
-
-def rotateDep(colorA, colorB, length):
-    global firstRun
-    global primary
-    global cycle
-    if firstRun:
-        for i in range(qty):
-            if primary:
-                for j in range(length):
-                    leds[i] = colorA
-            else:
-                for j in range(length):
-                    leds[i] = colorB
-            primary = not primary
-        firstRun = False
-    
-    for i in range(10):
-        if (i + cycle) % length == 0:
-            print("lets see {}".format(i))
-            if primary:
-                leds[i] = colorA
-            else:
-                leds[i] = colorB
-            primary = not primary
-    if cycle == length:
-        cycle = 0
-    cycle += 1
-    leds.show()
-     
+def wheel(pos):
+    if pos < 0 or pos > 255:
+        r = g = b = 0
+    elif pos < 85:
+        r = int(pos * 3)
+        g = int(255 - pos * 3)
+        b = 0
+    elif pos < 170:
+        pos -= 85
+        r = int(255 - pos * 3)
+        g = 0
+        b = int(pos * 3)
+    else:
+        pos -= 170
+        r = 0
+        g = int(pos * 3)
+        b = int(255 - pos * 3)
+    return (r, g, b)

@@ -10,12 +10,16 @@ xshut = laser_base.xshut
 lasers = laser_base.vl53
 enabled = True
 
+
+#Between these are the only things you should change#
 xshut.append(DigitalInOut(board.D21))
 xshut.append(DigitalInOut(board.D20))
 lightCount = 10
+#Between these are the only things you should change#
 
 laser_base.set_addresses()
 
+animations.rainbow_cycle(10)
 while enabled:
     if rio_coms.disabled():
         enabled = False
@@ -27,5 +31,6 @@ while enabled:
 
 
 #it'd be cool to throw rainbow led code in here
+animations.rainbow_cycle(10)
 print("ended")
 laser_base.reset_addresses()
