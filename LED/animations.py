@@ -27,9 +27,10 @@ def rotate(colorA, colorB, length):
     leds.show()
 
 def rainbow_cycle(wait):
+    global qty
     for j in range(255):
-        for i in range(led_count):
-            pixel_index = (i * 256 // led_count) + j
+        for i in range(qty):
+            pixel_index = (i * 256 // qty) + j
             leds[i] = wheel(pixel_index & 255)
         leds.show()
         leds.sleep(wait)
