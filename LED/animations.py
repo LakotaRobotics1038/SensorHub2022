@@ -26,7 +26,7 @@ def rotate(colorA, colorB, length):
     
     for i in range(10):
         if i + cycle % 4 == 0:
-            print("lets see {}").format(i)
+            print("lets see {}".format(i))
             if primary:
                 print(i)
                 print(cycle)
