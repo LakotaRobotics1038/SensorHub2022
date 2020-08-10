@@ -24,6 +24,7 @@ def rotate(colorA, colorB, length):
             leds[i - rotateCheck] = colorB
     
     rotateCheck += 1
+    leds.show()
 
 
 
