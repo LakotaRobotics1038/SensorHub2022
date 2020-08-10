@@ -6,8 +6,6 @@ import rio_coms
 from LED import animations
 
 lightCount = animations.qty
-animations.firstRun = True
-animations.primary = True 
 xshut = laser_base.xshut
 lasers = laser_base.vl53
 enabled = True

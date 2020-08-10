@@ -6,9 +6,9 @@ import sys
 import random
 qty = 300
 #set brightness with the brightness param i.e. brightness=0.01
-pixels = neopixel.NeoPixel(board.D18, qty, auto_write=False)
+leds = neopixel.NeoPixel(board.D18, qty, auto_write=False)
 
-#array that holds the number of pixels of each triangle
+#array that holds the number of leds of each triangle
 triangles = []
 
 #colors
@@ -82,8 +82,8 @@ def dim(color):
         b =  color[2]-j
         if b <= 0:
             b = 0
-        pixels.fill((r, g, b))
-        pixels.show()
+        leds.fill((r, g, b))
+        leds.show()
 
 def brighten(color):
     for j in range(0, max(color)-5, 5):
@@ -96,16 +96,16 @@ def brighten(color):
         b =  j
         if b >= color[2]:
             b = color[2]
-        pixels.fill((r, g, b))
-        pixels.show()
+        leds.fill((r, g, b))
+        leds.show()
 
 def spiral(color):
     for i in range(qty):
         if color == 'rainbow':
-            pixels[i] = colorarray[random.randrange(len(colorarray))]
+            leds[i] = colorarray[random.randrange(len(colorarray))]
         else:
-            pixels[i] = color
-        pixels.show()
+            leds[i] = color
+        leds.show()
     if color == 'rainbow':
         dim((220, 220, 220))
     else:
@@ -114,10 +114,10 @@ def spiral(color):
 def spiralback(color):
     for i in reversed(range(qty)):
         if color == 'rainbow':
-            pixels[i] = colorarray[random.randrange(len(colorarray))]
+            leds[i] = colorarray[random.randrange(len(colorarray))]
         else:
-            pixels[i] = color
-        pixels.show()
+            leds[i] = color
+        leds.show()
     dim(color)  
 
 def blink(color):
@@ -138,8 +138,8 @@ def tunnel(color):
             if b >= color[2]:
                 b = color[2]
             for x in range(50):
-                pixels[i+x] = (r, g, b)
-            pixels.show()
+                leds[i+x] = (r, g, b)
+            leds.show()
     dim(color)
 
 #executes the function depending on input
@@ -166,8 +166,8 @@ def f(l, c, o):
         while cho.value == o.value:
            blink(colorarray[random.randrange(len(colorarray))])
     else:
-        pixels.fill((0, 0, 0))
-        pixels.show()
+        leds.fill((0, 0, 0))
+        leds.show()
     l.release()
 
 #main
