@@ -20,7 +20,7 @@ while enabled:
     if rio_coms.disabled():
         enabled = False
     else:
-        animations.spiral((255,255,255))
+        animations.rotate((255,255,0), (0,255,0), 4)
         print("sending value")
         for i in range(len(lasers)):
             rio_coms.send_value(i, int(laser_base.distance(i)))
