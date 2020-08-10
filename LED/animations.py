@@ -36,7 +36,5 @@ def rotate(colorA, colorB, length):
                 pixels[i] = colorB
             primary = not primary
         cycle += 1
-        if cycle >= 4:
-            cycle = 0
     pixels.show()
      
