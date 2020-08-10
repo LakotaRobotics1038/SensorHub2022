@@ -33,7 +33,7 @@ def rainbow_cycle(wait):
             pixel_index = (i * 256 // qty) + j
             leds[i] = wheel(pixel_index & 255)
         leds.show()
-        leds.sleep(wait)
+        time.sleep(wait)
 
 def wheel(pos):
     if pos < 0 or pos > 255:

@@ -19,7 +19,7 @@ lightCount = 10
 
 laser_base.set_addresses()
 
-animations.rainbow_cycle(10)
+animations.rainbow_cycle(1)
 while enabled:
     if rio_coms.disabled():
         enabled = False
@@ -31,6 +31,6 @@ while enabled:
 
 
 #it'd be cool to throw rainbow led code in here
-animations.rainbow_cycle(10)
+animations.rainbow_cycle(1)
 print("ended")
 laser_base.reset_addresses()
