@@ -3,7 +3,7 @@ import board
 
 from Laser import laser_base
 import rio_coms
-from LED import animations
+import animations
 
 lightCount = animations.qty
 xshut = laser_base.xshut
@@ -31,6 +31,5 @@ while enabled:
 
 
 #it'd be cool to throw rainbow led code in here
-animations.rainbow_cycle(1)
-print("ended")
+animations.rainbow_cycle(0)
 laser_base.reset_addresses()

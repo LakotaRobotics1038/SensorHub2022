@@ -1,7 +1,7 @@
 import board
 import serial
 
-print("about to serial")
+
 rio = serial.Serial('/dev/ttyAMA0', 9600, timeout = 0, write_timeout = 0)
 standin = rio.read()
 
