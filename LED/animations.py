@@ -25,18 +25,15 @@ def rotate(colorA, colorB, length):
         firstRun = False
     
     for i in range(10):
-        if (i + cycle) % 4 == 0:
+        if (i + cycle) % length == 0:
             print("lets see {}".format(i))
             if primary:
-                print(i)
-                print(cycle)
                 pixels[i] = colorA
             else:
-                print(i)
-                print(cycle)
                 pixels[i] = colorB
             primary = not primary
-    
+    if cycle == length:
+        cycle = 0
     cycle += 1
     pixels.show()
      
