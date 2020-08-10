@@ -10,6 +10,7 @@ firstRun = True
 primary = True
 leds = neopixel.NeoPixel(board.D18, qty, auto_write=False)
 
+#Rotates between 2 colors
 def rotate(colorA, colorB, length):
     global rotateCheck
     global primary
@@ -26,6 +27,7 @@ def rotate(colorA, colorB, length):
     rotateCheck += 1
     leds.show()
 
+#GAY!! fun pretty estop code
 def rainbow_cycle(wait):
     while True:
         global qty
@@ -35,7 +37,7 @@ def rainbow_cycle(wait):
                 leds[i] = wheel(pixel_index & 255)
             leds.show()
             time.sleep(wait)
-
+#Wheel is used by the rainbow to...rainbow
 def wheel(pos):
     if pos < 0 or pos > 255:
         r = g = b = 0
