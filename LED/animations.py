@@ -25,9 +25,9 @@ def rotate(colorA, colorB, length):
         firstRun = False
     
     for i in range(qty):
-        print(i)
         if i + cycle % 4 == 0:
             if primary:
+                print(i)
                 pixels[i] = colorA
             else:
                 pixels[i] = colorB
