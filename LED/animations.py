@@ -12,12 +12,13 @@ leds = neopixel.NeoPixel(board.D18, qty, auto_write=False)
 
 def rotate(colorA, colorB, length):
     global rotateCheck
+    global primary
     if rotateCheck is length:
         rotateCheck = 0
     for i in range(qty):
         if i % length == 0:
-            blue = not blue
-        if blue:
+            primary = not primary
+        if primary:
             leds[i - rotateCheck] = colorA
         else:
             leds[i - rotateCheck] = colorB
