@@ -28,6 +28,7 @@ def rotate(colorA, colorB, length):
         if i + cycle % 4 == 0:
             if primary:
                 print(i)
+                print(cycle)
                 pixels[i] = colorA
             else:
                 pixels[i] = colorB
