@@ -11,6 +11,7 @@ pixels = neopixel.NeoPixel(board.D18, qty, auto_write=False)
 
 def rotate(colorA, colorB, length):
     global firstRun
+    global primary
     if firstRun:
         for i in range(qty):
             if primary:
