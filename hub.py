@@ -19,7 +19,7 @@ lightCount = 10
 
 laser_base.set_addresses()
 
-animations.rainbow_cycle(.1)
+animations.rainbow_cycle(0)
 while enabled:
     if rio_coms.disabled():
         enabled = False
