@@ -5,7 +5,7 @@ digitalList = {}
 
 def pinSetup():
     for pin in digitalList:
-        pin.switch_to_input()
+        digitalList[pin].switch_to_input()
 
 def sensorCheck(index):
     return digitalList[index].value
