@@ -15,12 +15,13 @@ enabled = True
 
 
 #v Between these are the only things you should change v#
-xshut.append(DigitalInOut(board.D21))
-xshut.append(DigitalInOut(board.D20))
 
-dio['limitSwitch'] = DigitalInOut(board.D18)
+#xshut.append(DigitalInOut(board.D21))          #copy to add lasers, change board port to the xshut pin
 
-lightCount = 10
+#dio['limitSwitch'] = DigitalInOut(board.D18)    #copy to add digital sensors, board port is signal pin, change name
+
+lightCount = 10                                 #number of leds
+animations.messageSetup("message here")         #converts your message to binary
 #^ Between these are the only things you should change ^#
 
 
@@ -31,7 +32,8 @@ while enabled:
     if rio_coms.disabled():
         enabled = False
     else:
-        animations.rotate((125,0,255), (0,0,255), 4)
+        #animations.rotate((125,0,255), (0,0,255), 4)       #only have one LED program active
+        animations.message((125,0,255), (0,0,255))          #only have one LED program active
         digitalSensors.sensorCheckOne()
         for i in range(len(lasers)):
             rio_coms.send_value(i, int(laser_base.distance(i)))

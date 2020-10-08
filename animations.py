@@ -6,9 +6,31 @@ import sys
 cycle = 0
 rotateCheck = 0
 qty = 10
+offset = 0
+digits = []
 firstRun = True
 primary = True
 leds = neopixel.NeoPixel(board.D18, qty, auto_write=False)
+
+#sets up the message to run in binary
+def messageSetup(message):
+    global digits
+    res = ''.join(format(ord(i), 'b') for i in message)
+    for i in res:
+        digits.append(i)
+
+#actually runs the binary message
+def message(colorA, colorB):
+    global digits
+    global qty
+    for i in range(qty):
+        if digits[i] == 0:
+            leds[i] = colorA
+        if digits[i] == 1:
+            leds[i] = colorB
+    digits = digits[1:] + digits[:1]
+    leds.show()
+
 
 #Rotates between 2 colors
 def rotate(colorA, colorB, length):
