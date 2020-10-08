@@ -1,7 +1,7 @@
 #v Imports/variables v#
-from collections import namedTuple
 from digitalio import DigitalInOut
 import board
+import time
 from Sensors import laser_base
 from Sensors import digitalSensors
 import rio_coms
@@ -10,7 +10,7 @@ import animations
 lightCount = animations.qty
 xshut = laser_base.xshut
 lasers = laser_base.vl53
-dio = digitalSensors.digitalSensors
+dio = digitalSensors.digitalList
 enabled = True
 
 
@@ -28,15 +28,18 @@ animations.messageSetup("message here")         #converts your message to binary
 #code that runs during the match
 digitalSensors.pinSetup()
 laser_base.set_addresses()
+animations.rotateSetup((100,0,255), (0,0,255), lightCount, 4)
 while enabled:
     if rio_coms.disabled():
         enabled = False
     else:
         #animations.rotate((125,0,255), (0,0,255), 4)       #only have one LED program active
         animations.message((125,0,255), (0,0,255))          #only have one LED program active
-        digitalSensors.sensorCheckOne()
+        print(digitalSensors.sensorCheck(0))
         for i in range(len(lasers)):
             rio_coms.send_value(i, int(laser_base.distance(i)))
+        #input()                #only use when debugging, comment out otherwise
+        time.sleep(0.1)        #you may need a delay for the lights depending on the number of sensors, comment it out if you don't
 
 
 #This runs after the robot is disabled
