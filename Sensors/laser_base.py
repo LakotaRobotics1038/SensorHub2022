@@ -18,9 +18,10 @@ def set_addresses():
         power_pin.switch_to_output(value=False)
 
     for i, power_pin in enumerate(xshut):
+        time.sleep(.1)
         power_pin.value = True                  #turn xshut on for selected pin
         vl53.insert(i, VL53L0X(i2c))            #add a sensor object, in the same order as the xshut's
-        if i < len(xshut)-1:                    # leave last sensor's address 29, before that, they will be increasing
+        if i < len(xshut):                      #leave last sensor's address 29, before that, they will be increasing
             vl53[i].set_address(0x30 + i)
 
 

@@ -10,7 +10,7 @@ offset = 0
 digits = []
 firstRun = True
 primary = True
-leds = neopixel.NeoPixel(board.D18, qty, auto_write=True)
+leds = neopixel.NeoPixel(board.D18, qty)
 
 #sets up the message to run in binary
 def messageSetup(message):
@@ -37,8 +37,10 @@ def rotate():
     global rotateCheck
     leds[qty - 1] = leds[0]
     for i in range(qty - 1):
-        print(leds[i + 1])
+        #print(leds[i + 1])
         leds[i] = leds[i + 1]
+        leds.show()
+        print(leds[i])
 def rotateSetup(colorA, colorB, length, section):
     global primary
     for i in range(length):
@@ -48,6 +50,9 @@ def rotateSetup(colorA, colorB, length, section):
              leds[i - rotateCheck] = colorA
         else:
              leds[i - rotateCheck] = colorB
+        print(leds[i])
+
+             
 #GAY!! fun pretty estop code
 def rainbow_cycle(wait):
     while True:
