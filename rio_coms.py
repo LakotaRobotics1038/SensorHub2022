@@ -1,13 +1,13 @@
+#v Imports/variables v#
 import board
 import serial
+rio = serial.Serial('/dev/ttyAMA0', 9600, timeout = 0, write_timeout = 0)
+standin = rio.read()
 
-
-rio = serial.Serial('/dev/serial0', baudrate = 115200, timeout = 0, write_timeout = 0)
-
-
+#checks if the robot has been disabled
 def disabled():
-    print(rio.read())
-    if rio.read() == b'D':	#the b is just an error I haven't figured out yet
+    print((rio.read()).decode('utf-8'))
+    if rio.read() is 'D':
         return True
     else:
         return False
@@ -15,12 +15,13 @@ def disabled():
 
 #def disabled():
 #    print((rio.read()).decode('utf-8'))
-#    if rio.read() is 'D':                  #This block can be renamed and use a different byte for any command
+#    if rio.read() is 'D':                  #This block can be renamed and use a different byte for any command from the rio
 #        return True
 #    else:
 #        return False
 
 
-def send_value(value, laser):
-    print("Value of Laser {}: {}".format(laser, value))
+#sends values to rio and prints them, add any new sensors to this
+def send_value(laser, value):
+    print("Laser {}: {}".format(laser, value))
     rio.write([value])
