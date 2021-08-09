@@ -1,17 +1,19 @@
 #v Imports/variables v#
 import board
 import serial
-rio = serial.Serial('/dev/ttyAMA0', 9600, timeout = 0, write_timeout = 0)
-standin = rio.read()
+rio = serial.Serial('/dev/serial0', 9600, timeout = 0, write_timeout = 0)
 
 #checks if the robot has been disabled
 def disabled():
-    print((rio.read()).decode('utf-8'))
-    if rio.read() is 'D':
+    standin = rio.read().decode('utf-8')
+    if standin is 'D':
         return True
     else:
         return False
 
+def loop():
+    rio.write('D'.encode('utf-8'))
+    
 
 #def disabled():
 #    print((rio.read()).decode('utf-8'))
