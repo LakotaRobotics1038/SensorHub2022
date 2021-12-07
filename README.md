@@ -20,8 +20,10 @@ For LEDs:
 RIO coms:
 
     Are currently iffy, Plan is to make it USB primary with Rx/Tx pin option commented
+When Setting Up New Raspberry Pi
 
-# When Setting Up New Raspberry Pi
     use "pip3 install" with all necessary imports
+    
     enable i2c bus in the settings
+    
     set the hub program to run on boot in rc.local
