@@ -52,8 +52,9 @@ while enabled:
          #^ Only one animation program is active at a time ^#
 
         for i in range(len(lasers)):
-            rio_coms.send_value(i+1, int(laser_base.distance(i)))
+            rio_coms.send_Laser(i+1, int(laser_base.distance(i)))
         time.sleep(cycleDelay)        #you may need a delay for the lights depending on the number of sensors, comment it out if you don't
+        rio_coms.send_value("Test", )
 
 
 #This runs after the robot is disabled
