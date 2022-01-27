@@ -26,4 +26,8 @@ def loop():
 #sends values to rio and prints them, add any new sensors to this
 def send_Laser(laser, value):
     print("Laser {}: {}".format(laser, value))
-    rio.write([value])
+    rio.write(value)
+
+def send_LimitSwitch(switch, value):
+    print("Limit Switch {}: {}".format(switch, value))
+    rio.write([1, value])
