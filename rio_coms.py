@@ -2,11 +2,11 @@
 import board
 import serial
 rio = serial.Serial('/dev/serial0', 9600, timeout = 0, write_timeout = 0)
-
+#usb is dev/serial1
 #checks if the robot has been disabled
 def disabled():
     standin = rio.read().decode('utf-8')
-    if standin is 'D':
+    if standin == 'D':
         return True
     else:
         return False
@@ -24,10 +24,15 @@ def loop():
 
 
 #sends values to rio and prints them, add any new sensors to this
-def send_Laser(laser, value):
+def send_value(laser, value):
+    
     print("Laser {}: {}".format(laser, value))
     rio.write(value)
-
-def send_LimitSwitch(switch, value):
-    print("Limit Switch {}: {}".format(switch, value))
-    rio.write([1, value])
+    
+def test_send(value):
+    if rio.isOpen():
+        pass
+    else: 
+        rio.open()
+    print(f"So help me god this had better work: {value}")
+    rio.write(value)
