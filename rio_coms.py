@@ -35,4 +35,4 @@ def test_send(value):
     else: 
         rio.open()
     print(f"So help me god this had better work: {value}")
-    rio.write(value)
+    rio.write(str(value).encode("utf-8"))
