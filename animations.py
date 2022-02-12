@@ -37,6 +37,7 @@ def rotate():
     leds[qty - 1] = leds[0]
     for i in range(qty - 1):
         leds[i] = leds[i + 1]
+        
 def rotateSetup(colorA, colorB, length, section):
     global primary
     for i in range(length):
