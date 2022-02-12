@@ -48,7 +48,7 @@ def rotateSetup(colorA, colorB, length, section):
              leds[i - rotateCheck] = colorB
 
              
-#GAY!! fun pretty estop code
+#fun pretty estop code
 def rainbow_cycle(wait):
     while True:
         global qty
