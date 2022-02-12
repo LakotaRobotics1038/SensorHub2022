@@ -1,4 +1,5 @@
 #v Imports/variables v#
+import string
 import board
 import serial
 rio = serial.Serial('/dev/serial0', 9600, timeout = 0, write_timeout = 0)
@@ -36,3 +37,8 @@ def test_send(value):
         rio.open()
     print(f"So help me god this had better work: {value}")
     rio.write(str(value).encode("utf-8"))
+
+def test_read():
+    rioOut = rio.read()
+    # rioString = rioOut.decode('utf-8')
+    print(rioOut)

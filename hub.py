@@ -17,6 +17,7 @@ enabled = True
 # v Between these are the only things you should change v#
 
 listedShutoffs = [
+    # Possible GPIO Pins: 17, 27, 22, 5, 6, 26
     # DigitalInOut(board.D20),
     # DigitalInOut(board.D19)
 ]  # Add list of Laser XSHUT pins
@@ -45,7 +46,17 @@ while enabled:
         enabled = False
     else:
         # input()                #only use when debugging, comment out otherwise
-        rio_coms.test_send(17)
+
+        #Send data in order of, first storage laser, second storage laser, third storage laser, first limit switch, second limit switch,
+        # first DIO, second DIO
+        rio_coms.test_read()
+        # rio_coms.test_send(1)
+        # rio_coms.test_send(2)
+        # rio_coms.test_send(3)
+        # rio_coms.test_send(4)
+        # rio_coms.test_send(5)
+        # rio_coms.test_send(6)
+        # rio_coms.test_send(7)
         # Runs the chosen LED program
         animations.run(mode, hex1, hex2)
         # rio_coms.send_value(1, 17)
