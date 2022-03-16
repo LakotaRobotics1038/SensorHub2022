@@ -27,11 +27,11 @@ listedShutoffs = [
 
 # LED Signal Pin is set in animations, D21 to start
 lightCount = 30  # Number of leds
-mode = "Rotate"  # "Rotate" or "Message" right now
-message = "Message Here"  # If running message code, message to convert
-cycleDelay = 0.1
-hex1 = (125, 0, 200)
-hex2 = (0, 0, 255)
+mode = "Fade"  # "Rotate" or "Message" (or neither for rainbow testing) right now
+message = "Something mean about Sean"  # If running message code, message to convert
+cycleDelay = 0.01
+hex1 = (200, 0, 200)
+hex2 = (0, 0, 200)
 
 # ^ Between these are the only things you should change ^#
 
@@ -47,27 +47,21 @@ while enabled:
     else:
         # input()                #only use when debugging, comment out otherwise
 
-        #Send data in order of, first storage laser, second storage laser, third storage laser, first limit switch, second limit switch,
-        # first DIO, second DIO
-        rio_coms.test_read()
-        # rio_coms.test_send(1)
-        # rio_coms.test_send(2)
-        # rio_coms.test_send(3)
-        # rio_coms.test_send(4)
-        # rio_coms.test_send(5)
-        # rio_coms.test_send(6)
-        # rio_coms.test_send(7)
         # Runs the chosen LED program
         animations.run(mode, hex1, hex2)
-        # rio_coms.send_value(1, 17)
+        #rio_coms.test_send(1)
+        #rio_coms.test_send(2)
+        #rio_coms.test_send(3)
+        #rio_coms.test_send(4)
+        #rio_coms.test_send(5)
         
 
         # for i in range(len(lasers)):
         #     rio_coms.send_value(i + 1, int(laser_base.distance(i)))
-        # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
+        # # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
         time.sleep(cycleDelay)
 
 
 # This runs after the robot is disabled
 laser_base.reset_addresses()
-animations.rainbow_cycle(0)
+animations.rainbow_cycle(cycleDelay)
