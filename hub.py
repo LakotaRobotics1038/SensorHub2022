@@ -16,20 +16,21 @@ enabled = True
 
 # v Between these are the only things you should change v#
 
+# Possible GPIO Pins: 17, 27, 22, 5, 6, 26
+# Add list of Laser XSHUT pins
 listedShutoffs = [
-    # Possible GPIO Pins: 17, 27, 22, 5, 6, 26
-    # DigitalInOut(board.D20),
-    # DigitalInOut(board.D19)
-]  # Add list of Laser XSHUT pins
-# xshut.append(listedShutoffs)                    #Keep commented unless using lasers
+  DigitalInOut(board.D17),
+  DigitalInOut(board.D27)
+]
+xshut = xshut + listedShutoffs                    #Keep commented unless using lasers
 
 # dio['limitSwitch'] = DigitalInOut(board.D16)    #copy to add digital sensors, board port is signal pin, change name
 
 # LED Signal Pin is set in animations, D21 to start
-lightCount = 30  # Number of leds
-mode = "Fade"  # "Rotate" or "Message" (or neither for rainbow testing) right now
+lightCount = 104  # Number of leds
+mode = "Fade"  # "Rotate", "Fade", "Tower", or "Message" (or none for rainbow testing) right now
 message = "Something mean about Sean"  # If running message code, message to convert
-cycleDelay = 0.01
+cycleDelay = 0.01 #0.01 for fade, 0.1 for rotate or message
 hex1 = (200, 0, 200)
 hex2 = (0, 0, 200)
 
@@ -54,11 +55,11 @@ while enabled:
         #rio_coms.test_send(3)
         #rio_coms.test_send(4)
         #rio_coms.test_send(5)
-        
 
-        # for i in range(len(lasers)):
-        #     rio_coms.send_value(i + 1, int(laser_base.distance(i)))
-        # # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
+
+        for i in range(len(lasers)):
+             rio_coms.test_send(int(laser_base.distance(i)))
+         # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
         time.sleep(cycleDelay)
 
 

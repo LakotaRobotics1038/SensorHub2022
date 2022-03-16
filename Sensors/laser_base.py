@@ -8,7 +8,7 @@ from Sensors.adafruit_vl53l0x import VL53L0X
 
 
 i2c = board.I2C()       #setup singleton i2c bus
-xshut = []              #list of xshut pins, apended in hub
+xshut = []              #list of xshut pins, appended in hub
 vl53 = []               #list of laser objects, ordered in the order the xshut's are declared
 
 
@@ -49,8 +49,8 @@ def distance(laserNum):
     return dist/10
 
 def proxy(laserNum, baseVal):
-    """ 
-    if lasers are used as proxes, as they are on Bampas. 
+    """
+    if lasers are used as proxes, as they are on Bampas.
     Returns true if there is something close enough
     """
     if (vl53[laserNum].range/10) < baseVal:

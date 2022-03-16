@@ -3,12 +3,12 @@ import neopixel
 import time
 import sys
 
-cycle = 0
-rotateCheck = 0
-qty = 84
-offset = 0
+#cycle = 0
+#rotateCheck = 0
+qty = 104
+#offset = 0
 digits = []
-firstRun = True
+#firstRun = True
 primary = True
 leds = neopixel.NeoPixel(board.D12, qty, auto_write = False)
 
@@ -35,13 +35,13 @@ def message(colorA, colorB):
 
 # Rotates between 2 colors
 def rotate():
-    global rotateCheck
+    #global rotateCheck
     leds[qty - 1] = leds[0]
     for i in range(qty - 1):
         leds[i] = leds[i + 1]
 
 def tower(point):
-    global rotateCheck
+    #global rotateCheck
     leds[qty - 1] = leds[point]
     leds[0] = leds[point-1]
     for i in range(qty - 1):
@@ -50,7 +50,7 @@ def tower(point):
         else:
             leds[i] = leds[i + 1]
 
-def bopIt(c1, c2):
+def fadeSetup(c1, c2):
     rDiff = (c1[0] - c2[0]) / (qty//2)
     gDiff = (c1[1] - c2[1]) / (qty//2)
     bDiff = (c1[2] - c2[2]) / (qty//2)
@@ -66,16 +66,16 @@ def rotateSetup(colorA, colorB, length, section):
         if i % section == 0:
             primary = not primary
         if primary:
-            leds[i - rotateCheck] = colorA
+            leds[i] = colorA # - rotateCheck] = colorA
         else:
-            leds[i - rotateCheck] = colorB
+            leds[i] = colorB # - rotateCheck] = colorB
 
 
 def setup(len=10, mode="Rotate", colorA=(125, 0, 200), colorB=(0, 0, 255), message=""):
     if mode == "Message":
         messageSetup(message)
     elif mode == "Fade":
-        bopIt(colorA, colorB)
+        fadeSetup(colorA, colorB)
     else:
         rotateSetup(colorA, colorB, len, 4)
 
