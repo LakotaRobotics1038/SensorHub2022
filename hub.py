@@ -49,15 +49,8 @@ while enabled:
 
         # Runs the chosen LED program
         animations.run(mode, hex1, hex2)
-        #rio_coms.test_send(1)
-        #rio_coms.test_send(2)
-        #rio_coms.test_send(3)
-        #rio_coms.test_send(4)
-        #rio_coms.test_send(5)
-
-
-        for i in range(len(lasers)):
-             rio_coms.test_send(int(laser_base.distance(i)))
+        laser_values = list(map((lambda index: int(laser_base.distance(index))), range(len(lasers))))
+        rio_coms.send_values(laser_values)
          # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
         time.sleep(cycleDelay)
 
