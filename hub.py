@@ -22,9 +22,8 @@ listedShutoffs = [
   DigitalInOut(board.D17),
   DigitalInOut(board.D27)
 ]
-xshut = xshut + listedShutoffs                    #Keep commented unless using lasers
 
-# dio['limitSwitch'] = DigitalInOut(board.D16)    #copy to add digital sensors, board port is signal pin, change name
+xshut.extend(listedShutoffs)                    #Keep commented unless using lasers
 
 # LED Signal Pin is set in animations, D21 to start
 lightCount = 104  # Number of leds
