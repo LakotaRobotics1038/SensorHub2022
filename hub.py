@@ -51,8 +51,8 @@ while enabled:
         animations.run(mode, hex1, hex2)
         laser_values = list(map((lambda index: int(laser_base.distance(index))), range(len(lasers))))
         rio_coms.send_values(laser_values)
-         # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
-        time.sleep(cycleDelay)
+        # you may need a delay for the lights depending on the number of sensors, comment it out if you don't
+        # time.sleep(cycleDelay)
 
 
 # This runs after the robot is disabled
