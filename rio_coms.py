@@ -21,7 +21,7 @@ def send_values(lasers):
     else:
         rio.open()
 
-    string_to_write = values.join(laser_strings) + "\r\n"
+    string_to_write = values.join(laser_strings) + "\n"
     rio.write(string_to_write.encode('utf-8'))
 
 def read():
