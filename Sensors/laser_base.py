@@ -27,9 +27,9 @@ def set_addresses():
 
 def reset_addresses():
     """ set all addresses back to zero """
-    for i, power_pin in enumerate(xshut):   #turns on each laser
-        power_pin.value = True
-        vl53[i].set_address(0x29)           #set each laser to 29 as it turns on
+    for power_pin in xshut:   #turns on each laser
+        power_pin.switch_to_output(value=False)
+    time.sleep(1)
 
 
 def detect_range(count=5):
