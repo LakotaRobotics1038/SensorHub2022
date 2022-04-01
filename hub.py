@@ -19,8 +19,8 @@ enabled = True
 # Possible GPIO Pins: 17, 27, 22, 5, 6, 26
 # Add list of Laser XSHUT pins
 listedShutoffs = [
-  DigitalInOut(board.D17),
-  DigitalInOut(board.D27)
+  DigitalInOut(board.D11),
+  DigitalInOut(board.D17)
 ]
 
 xshut.extend(listedShutoffs)                    #Keep commented unless using lasers
