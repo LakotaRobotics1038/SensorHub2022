@@ -13,6 +13,7 @@ def disabled():
 
 #sends values to rio and prints them, add any new sensors to this
 def send_values(lasers):
+    laser_strings = [str(int) for int in lasers]
     values = ","
 
     if rio.isOpen():
@@ -20,7 +21,8 @@ def send_values(lasers):
     else:
         rio.open()
 
-    rio.write(values.join(lasers))
+    string_to_write = values.join(laser_strings) + "\r\n"
+    rio.write(string_to_write.encode('utf-8'))
 
 def read():
     rioOut = rio.read()
