@@ -1,0 +1,11 @@
+[Unit]
+Description=1038 LED Hub
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/code/SensorHub2022/leds.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
