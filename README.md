@@ -15,8 +15,8 @@
 ### Running program as a linux service
 
 1. Open a terminal in the project folder
-2. `sudo ln -s led1038.service /lib/systemd/system/led1038.service`
-3. `sudo ln -s hub1038.service /lib/systemd/system/hub1038.service`
+2. `sudo ln -s $(pwd)/led1038.service /lib/systemd/system/led1038.service`
+3. `sudo ln -s $(pwd)/hub1038.service /lib/systemd/system/hub1038.service`
 4. `sudo systemctl daemon-reload`
 5. `sudo systemctl enable led1038`
 6. `sudo systemctl enable hub1038`
