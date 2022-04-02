@@ -30,8 +30,5 @@ digitalSensors.pinSetup()
 laser_base.set_addresses()
 
 while enabled:
-    else:
-        # input()                #only use when debugging, comment out otherwise
-
-        laser_values = list(map((lambda index: int(laser_base.distance(index))), range(len(lasers))))
-        rio_coms.send_values(laser_values)
+    laser_values = list(map((lambda index: int(laser_base.distance(index))), range(len(lasers))))
+    rio_coms.send_values(laser_values)
