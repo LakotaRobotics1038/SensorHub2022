@@ -5,11 +5,14 @@ rio = serial.Serial('/dev/serial0', 9600, timeout = 0, write_timeout = 0)
 
 #checks if the robot has been disabled
 def disabled():
-    standin = rio.read().decode('utf-8')
-    if standin == 'D':
-        return True
-    else:
-        return False
+    try:
+      standin = rio.readline().decode('ascii')
+      if standin == 'E':
+          return True
+      else:
+          return False
+    except:
+      return False
 
 #sends values to rio and prints them, add any new sensors to this
 def send_values(lasers):
@@ -22,9 +25,4 @@ def send_values(lasers):
         rio.open()
 
     string_to_write = values.join(laser_strings) + "\n"
-    rio.write(string_to_write.encode('utf-8'))
-
-def read():
-    rioOut = rio.read()
-    # rioString = rioOut.decode('utf-8')
-    print(rioOut)
+    rio.write(string_to_write.encode('ascii'))
