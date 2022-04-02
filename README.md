@@ -1,29 +1,34 @@
 # Python Code For Raspberry Pi
-Lasers are functional:
 
-    If you get errorno 121, check wiring
-    
-    Add pins connected to laser XSHUT pins to commented list
-    
-If using DIO sensors: 
+## Setup
 
-    Copy line mentioning linit switch for all sensors
+* If using DIO sensors:
+  * Copy line mentioning linit switch for all sensors
+* For LEDs:
+  * Set LightCount to the number of LEDs
+  * Choose message or rotate
+  * Change delay, to balance LED animations
+* RIO coms:
+  * use `pip3 install` with all necessary imports
+  * enable i2c bus in the settings
 
-For LEDs:
+### Running program as a linux service
 
-    Set LightCount to the number of LEDs
-    
-    Choose message or rotate
-    
-    Change delay, to balance LED animations with sensor outputs
-  
-RIO coms:
+1. Open a terminal in the project folder
+2. `sudo ln -s led1038.service /lib/systemd/system/led1038.service`
+3. `sudo ln -s hub1038.service /lib/systemd/system/hub1038.service`
+4. `sudo systemctl daemon-reload`
+5. `sudo systemctl enable led1038`
+6. `sudo systemctl enable hub1038`
+7. Restart the pi
 
-    Are currently iffy, Plan is to make it USB primary with Rx/Tx pin option commented
-When Setting Up New Raspberry Pi
+## Troubleshooting
 
-    use "pip3 install" with all necessary imports
-    
-    enable i2c bus in the settings
-    
-    set the hub program to run on boot in rc.local
+### Lasers
+
+* If you get errorno 121, check wiring
+* Add pins connected to laser XSHUT pins to commented list
+
+## Known Issues
+
+* If lasers are in use, you have to power-cycle the pi to restart the hub program
